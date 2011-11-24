@@ -1,0 +1,19 @@
+Description: Fix format string use
+Origin: vendor
+Bug-Debian: http://bugs.debian.org/565064
+Forwarded: no
+Author: Daniel T Chen <seven.steps@gmail.com>,
+ gregor herrmann <gregoa@debian.org>
+Last-Update: 2011-11-24
+
+--- a/score.C
++++ b/score.C
+@@ -337,7 +337,7 @@
+     }
+     // Always read the latest high score
+     readfile();
+-    sprintf(format, res_strings[0]);
++    sprintf(format, "%s", res_strings[0]);
+     prev_time = -1;
+     for(int i=0; i<SCORENUM; i++) {
+         this_time = rec[i].hour * 3600 + rec[i].min * 60 + rec[i].sec;

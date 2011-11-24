@@ -1,0 +1,50 @@
+#!/usr/bin/make -f
+# rules --- Debian packaging rules for xshisen
+
+# Let's use CDBS!
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+include /usr/share/cdbs/1/rules/simple-patchsys.mk
+include /usr/share/cdbs/1/class/autotools.mk
+
+# Because the upstream source doesn't ship config.{guess,sub}, we have to
+# manually link them in, since we will patch `./configure' later on to use
+# these.
+makebuilddir/xshisen::
+	test -f $(DEB_SRCDIR)/config.guess || \
+	     ln -s /usr/share/misc/config.guess $(DEB_SRCDIR)/
+	test -f $(DEB_SRCDIR)/config.sub || \
+	     ln -s /usr/share/misc/config.sub $(DEB_SRCDIR)/
+
+clean::
+	rm -f $(DEB_SRCDIR)/config.guess $(DEB_SRCDIR)/config.sub
+
+# Since this is a game package, use the right paths for it
+DEB_CONFIGURE_NORMAL_ARGS += --sharedstatedir="/var/games" \
+				--bindir="\$${prefix}/games" \
+				--datadir="\$${prefix}/share/games"
+
+DEB_CONFIGURE_EXTRA_FLAGS := --with-x11-resource=/etc/X11 \
+				--x-includes=/usr/X11R6/include \
+				--x-libraries=/usr/X11R6/lib
+
+# Override install target
+DEB_MAKE_INSTALL_TARGET := install install.man \
+			prefix=$(DEB_DESTDIR)/usr \
+			bindir=$(DEB_DESTDIR)/usr/games \
+			datadir=$(DEB_DESTDIR)/usr/share/games \
+			DESTDIR=$(DEB_DESTDIR) \
+			XSHISENDAT=$(DEB_DESTDIR)/usr/share/games/xshisen \
+			XSHISENLIB=$(DEB_DESTDIR)/usr/share/games/xshisen
+
+# Ensure we install xshisen with the proper permissions, remove empty
+# directories
+binary-post-install/xshisen::
+	chown root.root $(DEB_DESTDIR)/usr/games/xshisen
+	chmod 644 $(DEB_DESTDIR)/usr/share/games/xshisen/xshisen.scores
+	rm -rf $(DEB_DESTDIR)/etc/X11/C \
+		$(DEB_DESTDIR)/usr/share/man/C \
+		$(DEB_DESTDIR)/usr/share/man/pl
+# Remove extra Japanese manpages
+	rm -rf $(DEB_DESTDIR)/usr/share/man/ja_* \
+		$(DEB_DESTDIR)/etc/X11/ja_*

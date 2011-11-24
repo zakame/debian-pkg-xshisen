@@ -1,0 +1,2 @@
+?package(xshisen):needs="X11" section="Games/Board"\
+  title="xshisen" command="/usr/games/xshisen"

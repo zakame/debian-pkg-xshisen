@@ -1,0 +1,162 @@
+xshisen (1:1.51-3.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix "ftbfs with gcc-4.5 and gcc-4.6": new patch 40_format_security.patch:
+    Fix format string use. Based on Daniel T Chen's patch in the BTS.
+    (Closes: #565064)
+
+ -- gregor herrmann <gregoa@debian.org>  Thu, 24 Nov 2011 21:40:40 +0100
+
+xshisen (1:1.51-3.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+    - Update to packaging format "3.0 (quilt)" due to patch.
+  * debian/compat
+    - Update to 7.
+  * debian/control
+    - (Build-Depends): update obsolete xutils to xutils-dev
+      (important; Closes: #579035).
+      Update to debhelper 7.1.
+    - (Depends): add ${misc:Depends}.
+    - (Homepage): Move from description field.
+    - (Standards-Version): Update from 3.7.2 to 3.8.4.
+  * debian/copyright:
+    - Update layout.
+  * debian/patches
+    - (Number 11): Refresh patch to include .nf/.fi fix
+  * debian/rules
+    - (buid-stamp): use newest config.* files.
+    - (install): Update dh_clean to dh_prep.
+    - (clean): Fix lintian debian-rules-ignores-make-clean-error.
+    - Update to dh(1).
+  * debian/source/format
+   - New file
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sun, 09 May 2010 01:03:30 +0300
+
+xshisen (1:1.51-3) unstable; urgency=medium
+
+  * debian/control:
+    + Use lesstif2-dev .  (Closes: #391164)
+
+ -- Zak B. Elep <zakame@spunge.org>  Thu,  5 Oct 2006 16:37:36 +0800
+
+xshisen (1:1.51-2) unstable; urgency=low
+
+  * The "REALLY fix the weird packaging" release.
+  * debian/control:
+    + Bump Standards-Version (no changes required.)
+  * debian/patches:
+    + Update 20_autotools_update.patch , remove config.{guess,sub}
+      hack.
+  * debian/rules:
+    + Properly get config.{guess,sub} , since CDBS' autotools.mk
+      could not obtain these since we're not using them before
+      patching.
+    + Manually set X includes and libraries upon configure.
+      (Closes: #367888)
+  * Remove debian/postinst as it turns out empty upon package build.
+    We won't miss it, anyhow ;)
+
+ -- Zak B. Elep <zakame@spunge.org>  Thu, 25 May 2006 23:43:10 +0800
+
+xshisen (1.51-1-2) unstable; urgency=low
+
+  * New maintainer (as agreed with former maintainer; see
+    http://lists.debian.org/debian-devel/2006/02/msg00007.html)
+  * Fix strange source packaging problem (Closes: #291279)
+  * debian/control:
+    - Changed build system to CDBS + debhelper.
+    - Bump Standards-Version.
+    - Bump debhelper Build-Depends to (>= 5) ; updated compat too.
+    - Slightly touch description; added homepage too.
+  * debian/patches:
+    - Added 10_oldfixes.patch .  Must sort the various hunks out soon.
+      Acknowledging NMUs .
+    - Added 11_manpage_fixes.patch to properly format C and ja manpages.
+    - Added 20_autotools_update.patch .
+  * debian/rules:
+    - Remove extra Japanese manpages as suggested by Nicolas François.
+      Remove app-defaults for these extra locales too.
+  * debian/menu:
+    - Properly quote menu entry.
+
+ -- Zak B. Elep <zakame@spunge.org>  Tue, 21 Feb 2006 22:35:26 +0800
+
+xshisen (1.51-1-1.3) unstable; urgency=low
+
+  * Non-maintainer upload to do xlibs-dev transition.
+  * Update debian/control to not build-depend on xlibs-dev anymore. (Closes:
+    #346854)
+  * Fix Makefile.in to reflect GNU make behaviour change regarding line
+    continuations and whitespace.
+
+ -- Marc 'HE' Brockschmidt <he@debian.org>  Thu, 19 Jan 2006 01:03:07 +0100
+
+xshisen (1.51-1-1.2) unstable; urgency=HIGH
+
+  * NMU (at maintainer's request).
+  * Add NO_GLOBAL_HIGHSCORE define which crudely disables the support for
+    a global score file.
+  * Remove sgid bit. Closes: #291613, #292065
+  * Comment out code in postinst that set up /var/games/xshisen.scores,
+    but for now, do not delete that file on upgrade.
+  * Add README.Debian.
+
+ -- Joey Hess <joeyh@debian.org>  Thu, 27 Jan 2005 02:42:26 -0500
+
+xshisen (1.51-1-1.1) unstable; urgency=HIGH
+
+  * NMU
+  * Fix buffer overflow in handling of GECOS field (CAN-2005-0117)
+    using patch from Ulf Harnhammar. Closes: #289784
+
+ -- Joey Hess <joeyh@debian.org>  Wed, 19 Jan 2005 15:16:55 -0500
+
+xshisen (1.51-1-1) unstable; urgency=high
+
+  * Non-maintainer upload with consent from Grzegorz.
+  * Fix a locally exploitable buffer overflow allowing GID(games).
+    (Closes: #213957)
+
+ -- Steve Kemp <skx@debian.org>  Tue, 28 Oct 2003 13:49:29 +0000
+
+xshisen (1.51-1) unstable; urgency=low
+
+  * New upstream release.
+  * Manual pages are now installed. Closes: #177822
+
+ -- Grzegorz Prokopski (Debian Developer) <gadek@debian.org>  Wed, 22 Jan 2003 10:01:40 +0100
+
+xshisen (1.50-3.1) unstable; urgency=low
+
+  * Non-Maintainer-Upload during Bug Squashing Party
+  * Added missing build dependency on xutils. Closes: #155646
+  * Moving X resource files from /usr/X11R6/lib/X11/app-defaults
+    to /etc/X11/app-defaults in compliance with Policy,
+    Section 12.8.6.
+  * Hardcoded version in X resource files and commented out
+    processing of those files by xshisen during install, as no
+    X display is available on the buildds while autobuilding.
+
+ -- Michael Banck <mbanck@debian.org>  Sun,  1 Sep 2002 13:53:23 +0200
+
+xshisen (1.50-3) unstable; urgency=low
+
+  * Moving binaries to /usr/games, static data to /usr/share/games,
+    manual to man6 - thanks to Michal Politowski. Closes: #155329
+
+ -- Grzegorz Prokopski (Debian Developer) <gadek@debian.org>  Sat,  3 Aug 2002 17:49:27 +0200
+
+xshisen (1.50-2) unstable; urgency=low
+
+  * Added missing build dependency on libxaw7-dev. Closes: #155286
+
+ -- Grzegorz Prokopski (Debian Developer) <gadek@debian.org>  Sat,  3 Aug 2002 09:37:40 +0200
+
+xshisen (1.50-1) unstable; urgency=low
+
+  * Initial Release. Closes: #149222
+
+ -- Grzegorz Prokopski (Debian Developer) <gadek@debian.org>  Tue, 30 Jul 2002 20:22:55 +0200
+

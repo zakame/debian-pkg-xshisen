@@ -1,0 +1,4 @@
+Note that in the Debian package of xshisen, support for system-wide score
+files is disabled. This was done because xshisen is not written very
+securely, and a system-wide score file required the program to be installed
+setgid games.
