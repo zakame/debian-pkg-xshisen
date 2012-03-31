@@ -1,0 +1,100 @@
+『四川省 for X11』インストール方法
+
+1. 『四川省 for X11』のインストールには
+
+   [1] OSF/Motif 1.2 以上 または Athena Widget
+   [2] Xpm ライブラリ
+   [3] gcc などの C++ コンパイラ
+
+   が必要になります。Xpm ライブラリは、たとえば、
+
+   ftp://ftp.x.org/contrib/libraries/xpm-3.4k.tar.gz
+
+   にあります。Athena Widget を使う場合には若干の制限があります。
+
+2. configure を実行します。configure のオプションには、以下のもの
+   があります。通常はMotifを使う場合に --with-motif だけ指定
+   すれば良いでしょう。また、特定の C++ コンパイラを利用する場合に
+   は CXX=g++ ./configure のように、環境変数 CXX を指定して 
+   configure を起動してください。
+
+   --with-motif   Motif を使う。指定しないと Athena Widget を使う。
+   --with-motif-include=DIR
+                  Motif の include ファイルのあるディレクトリを指
+                  定する。
+   --with-motif-lib=DIR
+                  libXm があるディレクトリを指定する
+   --with-xpm-include=DIR
+                  X11/xpm.h があるディレクトリを指定する
+   --with-xpm-lib=DIR
+                  libXpm があるディレクトリを指定する
+   --enable-dupscore
+                  同一人物がハイスコアに複数エントリできるようにす
+                  る。デフォルトでは一人につきひとつしかエントリで
+                  きない。
+   --prefix=DIR   インストール先のディレクトリを変更する
+                  (デフォルトは /usr/local)
+   --datadir=DIR  Pixmap ファイルがインストールされるディレクトリ
+                  を変更する。指定したディレクトリの下に xshisen
+                  というディレクトリが作成され、そこにインストール
+                  される
+   --sharedstatedir=DIR
+                  スコアファイルを置くディレクトリを変更する。
+                  指定ディレクトリの直下に xshisen.scores という
+                  ファイル名でスコアファイルが生成されるので、この
+                  ファイルに対する書き込み権限は四川省をプレイする
+                  すべてのユーザに必要。
+
+   Windows版とスコアファイルを共有する場合には、XShisen.ad に、
+   以下のようにリソースを加えて、 Windows 版のスコアファイルのパス
+   を指定します。
+
+     XShisen*scoreFile: /dos/c/sisenw/sisen.log
+
+3. make install でプログラム本体、牌画データ、ダミーのハイスコアファ
+   イルがインストールされます。すでに古いバージョンの xshisen のハ
+   イスコアファイルがある場合には上書きしません。
+
+4. make install.man でオンラインマニュアルがインストールされます。
+
+======================================================================
+Athena Widget で作成する場合の制限
+
+ o X11R5 の Athena Widget を使った場合、通常は日本語メニュー等が使
+   えません。X11R6 であれば、大丈夫です。
+   (HP の場合は、アソシエイトフォントにより、X11R5 でも日本語を表
+    示できます。リソースファイルの 最後の行の ! を取ってください)
+
+======================================================================
+インストールのヒント
+
+[Linux]
+./configure
+make
+make install
+
+[Solaris with g++]
+./configure --with-motif
+make CPPOPTS="-fpermissive"
+make install
+
+[HP-UX]
+./configure \
+    --x-libraries=/usr/lib/X11R6 \
+    --x-includes=/usr/include/X11R6 \
+    --with-xpm-lib=/usr/local/lib/X11 \
+    --with-xpm-include=/usr/local/include \
+    --with-motif \
+    --with-motif-include=/usr/include/Motif1.2 \
+    --with-motif-lib=/usr/lib/Motif1.2_R6
+make
+make install
+======================================================================
+
+- ゲームの遊び方はオンラインマニュアルを参考にしてください。
+- 『四川省 for X11』の著作権はBSDスタイルです。詳しくは LICENSE
+  ファイルを参照してください。
+- 問題点、バグなどを発見した場合は作者まで連絡していただけるとあ
+  りがたいです。(電子メール: masaoki@techfirm.co.jp)
+- Java(tm)によるWeb四川省もあります。下記のURLを参照してください。
+  <http://www.techfirm.co.jp/~masaoki/>

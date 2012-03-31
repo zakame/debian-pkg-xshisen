@@ -1,0 +1,84 @@
+Installing Shisen-sho for X11
+
+1. You need
+
+   [1] OSF/Motif 1.2 or above, or Athena widget set
+   [2] Xpm library
+   [3] C++ compiler like gcc
+
+   You can find Xpm library, for example, at
+
+   ftp://ftp.x.org/contrib/libraries/xpm-3.4k.tar.gz
+
+2. Execute "./configure".  The configure has the following
+   options.  You need only --with-motif (if you want) normally.
+   In case of you want to specify the particular C++ compiler, you 
+   can set CXX environment variable before you run configure.
+
+   --with-motif   Use Motif widgets.
+   --with-motif-include=DIR
+                  Specifies where Motif include file is.
+   --with-motif-lib=DIR
+                  Specifies where libXm is.
+   --with-xpm-include=DIR
+                  Specifies where X11/xpm.h is.
+   --with-xpm-lib=DIR
+                  Specifies where libXpm is.
+   --enable-dupscore
+                  Allow one person to register multiple scores.
+                  At default, only one score for one person can be 
+                  registered.
+   --prefix=DIR   Specifies the directory to install files.
+                  (/usr/local is default)
+   --datadir=DIR  Change the directory where pixmap files are
+                  installed.  These files will be installed
+                  under the DIR/xshisen directory.
+   --sharedstatedir=DIR
+                  Change the directory where score file is
+                  installed.  The DIR/xshisen.scores will be
+                  writable to anybody who plays this game.
+
+   If you want to share the same score file with sisenw (Windows
+   version of Shisen-sho), you should add the following resource
+   into XShisen.ad.ad in order to specify the score file path of
+   sisenw.
+
+     XShisen*scoreFile: /dos/c/sisenw/sisen.log
+
+3. make install  (If you have old xshisen-scores in your xshisen
+   data directory, this does not install the dummy score file.)
+
+4. make install.man
+
+======================================================================
+Installation Hints
+
+[Linux]
+./configure
+make
+make install
+
+[Solaris with g++]
+./configure --with-motif
+make CPPOPTS="-fpermissive"
+make install
+
+[HP-UX]
+./configure \
+    --x-libraries=/usr/lib/X11R6 \
+    --x-includes=/usr/include/X11R6 \
+    --with-xpm-lib=/usr/local/lib/X11 \
+    --with-xpm-include=/usr/local/include \
+    --with-motif \
+    --with-motif-include=/usr/include/Motif1.2 \
+    --with-motif-lib=/usr/lib/Motif1.2_R6
+make
+make install
+
+======================================================================
+
+- Refer to the online manual for playing game.
+- Xshisen is distributed under BSD-style license.  Read LICENSE
+  file for detail.
+- There is also Java(tm) version of Shisen game.  Look at
+  <http://www.techfirm.co.jp/~masaoki/>

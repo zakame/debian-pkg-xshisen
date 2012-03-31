@@ -1,0 +1,191 @@
+.TH xshisen 6 "Oct 6, 1995" "X Version 11"
+.SH NAME
+xshisen \- Shisen-sho puzzle game for X11
+.SH SYNOPSIS
+.B xshisen [ options ]
+.SH DESCRIPTION
+.IR xshisen
+is a puzzle game for X11.  Similar to the famous "Shang-hai", your 
+objective is to remove all the pieces on the board.
+.IR xshisen
+requires a pointing device like mouse.  It cannot be controlled
+with only keyboard.
+
+.SH RULES
+The game will over when you remove all the pieces on the board.
+The pieces can be removed only when both of the following
+conditions are true.
+
+.TP 4
+.B (1)
+The 2 pieces have the same picture
+.TP 4
+.B (2)
+The 2 pieces can be connected with up to 3 lines which do not go
+over other pieces.
+
+.TP 0
+It may seem difficult rule, but is easier than describing in
+words.  "Auto-demo" mode must be very useful for you to understand 
+the rule.
+
+.SS Score
+The best scores will be recorded at
+\fIxshisen\-scores\fP
+file under the directory specified by
+\fIXSHISENLIB\fP
+environment variable.  X resources "libDirectory" will be valid if 
+the environment variable is not set.
+Note that the score will not be recorded if you use even one of "Back", 
+"Search", or "Restart".
+
+.SH OPTIONS
+The following command line options are available.
+.TP 8
+.B standard Xt options
+.IR xshisen
+accepts standard toolkit options like \fB-display\fR, or \fB-iconic\fR.
+.TP 8
+.B -demo
+Auto-demo mode.  You cannot play game with this mode, but the game 
+will proceed by computer automated algorithm.  This mode is quite
+useful for you to understand rules.
+.TP 8
+.B -score
+Just displays the best score dialog and exits.
+.TP 8
+.B \-mag number
+Magnify main window by \fBnumber\fR times.  The standard window
+will be 640x400.  \fBNumber\fR may be a decimal, but the range is
+limited from 0.5 to the display size.
+.TP 8
+.B \-fn fontlist
+Use \fBfontlist\fR for menubar and times.
+.TP 8
+.B \-large
+Play double sized game.  Game size can be changed with menubar
+after you started \fIxshisen\fP.  Each game size has independent
+best time records.
+.TP 8
+.B \-huge
+Play quadruple sized game.  Game size can be changed with menubar
+after you started \fIxshisen\fP.  Each game size has independent
+best time records.
+.TP 8
+.B \-trial
+Play as "Click Trial" mode.  You can measure your mouse operation
+speed with this feature.
+.TP 8
+.B \-gravity
+Enable gravity effect.  All the pieces above the removed pieces
+will fall down.
+
+.SH RESOURCE
+The following resources are available.
+.TP 8
+.B XShisen*fitPixmap
+If this value is \fBTrue\fR, the initial window size will be
+automatically calculated with the pixmap data size.
+When this value is \fBFalse\fR, the initial window size is
+determined by the \fBwidth\fR and \fBheight\fR resources.  The
+pixmap data will be resized in this case.  Default value is
+\fBTrue\fR.
+.TP 8
+.B XShisen*width
+Width of the initial window.  This resource is ignored when
+\fBfitPixmap\fR
+resource is set to
+\fBTrue\fR.
+Default value is 640.
+.TP 8
+.B XShisen*height
+Height of the initial window.  This resource is ignored when
+\fBfitPixmap\fR
+resource is set to
+\fBTrue\fR.
+Default value is 400.
+.TP 8
+.B XShisen*scoreFile
+This resource specifies the score file name.  This file name must
+not contain the directory name.  Default value is "xshisen-scores".
+.TP 8
+.B XShisen*connectLineTime
+The delay time in mili-second between you clicke the pair and the
+pair is actually removed from screen.  This value should be enough 
+big for beginners, but experts may want this value smaller in
+order to play quickly.  Default value is 1000 mili-seconds.
+.TP 8
+.B XShisen*connectLineColor
+This specifies the connection line color which appears when pieces 
+are being removed.
+Default value is "blue".
+.TP 8
+.B XShisen*connectLineWidth
+This specifies the connection line width in pixel. Default value
+is 6.
+.TP 8
+.B XShisen*background
+Background color. Default value is #004000.
+.TP 8
+.B XShisen*libraryDirectory
+The directory where the pixmap data and the best score file is
+located.  This resource is ignored when you specify the
+.IR XSHISENLIB
+environment variable.
+.TP 8
+.B XShisen*drawing.translations
+Button binding setting for your mouse.  Default is
+.NF
+
+      <Btn1Down>: #replace PickupPiece() \n <Btn3Down>: CancelPiece()
+
+.FI
+
+.SH MENU BAR AND KEYBOARD
+.TP 8
+.B Start (Control + D)
+Starts new game. The pieces are located at random position.
+.TP 8
+.B Restart (Control + R)
+Restarts the current game. The time of restarted game will not be
+recorded as the best score.
+.TP 8
+.B Pause (Control + P)
+Pauses the game. The time count will be stopped, but also the
+pieces picture will be hidden.  You can resume your game to do
+"Pause" again.
+.TP 8
+.B Exit
+Exits the Shisen-sho.
+.TP 8
+.B Search (F1)
+Teaches the pair you can remove now.  You can use "Search"
+anytime, but the time will not be recorded as the best score if
+you use "Search" even once.
+.TP
+.B Back (F5)
+Backs one step.  The time will not be recorded if you use "Back".
+
+.SH MOUSE CONTROL
+The following mouse control is available.  You can change mouse
+button bindings with
+\fBXShisen*drawing.translations\fR resource.
+.TP 8
+.B Button 1
+Specifies the piece to remove.  You can cencel the selection when
+you click the selected piece again.
+.TP 8
+.B Button 3
+Cancels the selected piece.  You can use button 3 after "Search",
+which cancels the search result.
+
+.SH AUTHORS
+Shisen-sho for X11: Masaoki Kobayashi
+.RE
+Picture: Takayuki Akiyama
+
+.SH COPYRIGHT
+XShisen Copyright 1995,1996,1999,2002 by Masaoki Kobayashi <masaoki@techfirm.co.jp>.
+Picture#1 Copyright by Takayuki Akiyama <taco3@ybb.ne.jp>.
+Picture#2 Copyright by Mario Weilguni <mweilguni@sime.com>.
+See LICENSE file for detail.

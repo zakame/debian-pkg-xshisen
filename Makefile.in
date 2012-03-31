@@ -1,0 +1,116 @@
+# Makefile for Autoconf.
+# -*-Makefile-*-
+# @configure_input@
+
+# by Debian maintainer
+DESTDIR =
+
+srcdir      = @srcdir@
+VPATH       = @srcdir@
+
+prefix      = @prefix@
+exec_prefix = @exec_prefix@
+bindir      = @bindir@
+datadir     = @datadir@
+exec_name   = xshisen
+class_name  = XShisen
+
+XSHISENLIB = @datadir@/xshisen
+XSHISENDAT = @sharedstatedir@
+CXXFLAGS = @CXXFLAGS@
+CPPFLAGS = $(CPPOPTS) @CPPFLAGS@
+CPPOPTS  =
+LDFLAGS  = @LDFLAGS@
+DEFS     = @DEFS@
+CXX      = @CXX@
+INSTALL  = @INSTALL@
+INSTALLP = @INSTALL_PROGRAM@
+INSTALLD = @INSTALL_DATA@
+MKDIR    = @MKDIR@
+XAD_DIR  = @XAD_DIR@
+MANDIR   = @mandir@
+LANGS    = @LANGS@
+
+SRCS = main.C menubar.C body.C mahjong.C timer.C score.C \
+       history.C image.C actions.C callbacks.C readxpm.C \
+       common.C gamesize.C kconv.C nonstandard.C
+OBJS = main.o menubar.o body.o mahjong.o timer.o score.o \
+       history.o image.o actions.o callbacks.o readxpm.o \
+       common.o gamesize.o kconv.o nonstandard.o
+PROGS = $(exec_name)
+AD    = work/XShisen.ad
+SCF   = xshisen.scores
+
+LIBS      = @LIBS@ 
+CODECONV  = ./$(exec_name) -KCONV none
+
+all: $(PROGS)
+
+$(exec_name): $(OBJS)
+	$(CXX) $(LDFLAGS) $(OBJS) $(LIBS) -o $(exec_name)
+
+install: install-resource install-prog
+
+install-prog: $(PROGS)
+	@echo "XShisen executable directory is " $(bindir)
+	@$(MKDIR) $(bindir)
+	@chmod 755 $(bindir)
+	$(INSTALLP) $(PROGS) $(bindir)/$(PROGS)
+	@echo "XShisen data directory is " $(XSHISENLIB)
+	@$(MKDIR) $(XSHISENDAT)
+	@chmod 755 $(XSHISENDAT)
+	@if [ -f $(XSHISENDAT)/$(SCF) ]; then \
+	echo "Old high-score file exists."; \
+	else\
+	$(INSTALL) -m 0666 $(SCF) $(XSHISENDAT)/$(SCF); \
+	fi
+	@$(MKDIR) $(XSHISENLIB)
+	@set -x; \
+	for dir in pixmaps/s?; do \
+		dn=`basename $$dir`; \
+		$(MKDIR) $(XSHISENLIB)/$$dn; \
+		for file in $$dir/*.xpm; do \
+			fn=$(XSHISENLIB)/$$dn/`basename $$file`; \
+			$(INSTALLD) $$file $$fn; \
+		done; \
+	done
+
+install-resource: $(AD)
+	$(MKDIR) $(DESTDIR)$(XAD_DIR)/app-defaults
+	$(INSTALLD) $(AD) $(DESTDIR)$(XAD_DIR)/app-defaults/$(class_name)
+	-[ -n $(LANG) ] && $(MKDIR) $(DESTDIR)$(XAD_DIR)/$(LANG)/app-defaults
+	-@set -x; \
+	for lang in $(LANGS); do \
+	[ -d $(DESTDIR)$(XAD_DIR)/$$lang/app-defaults ] || \
+	$(MKDIR) $(DESTDIR)$(XAD_DIR)/$$lang/app-defaults; \
+	$(INSTALLD) $(AD).$$lang $(DESTDIR)$(XAD_DIR)/$$lang/app-defaults/$(class_name); \
+	done
+
+install.man: man/$(exec_name).6
+	-$(MKDIR) $(MANDIR)/man6
+	$(INSTALLD) man/$(exec_name).6 $(MANDIR)/man6/$(exec_name).6
+	-[ -n "$(LANG)" ] && $(MKDIR) $(MANDIR)/$(LANG)
+	-@set -x; \
+	for lang in $(LANGS); do \
+	[ -d $(MANDIR)/$$lang/man6 ] || $(MKDIR) $(MANDIR)/$$lang/man6; \
+	[ -f man/$(exec_name).6.$$lang ] && $(INSTALLD) man/$(exec_name).6.$$lang $(MANDIR)/$$lang/man6/$(exec_name).6; \
+	done
+
+clean:
+	rm -rf work
+	rm -f *.o $(PROGS)
+
+distclean: clean
+	rm -f config.log config.cache config.status config.h Makefile
+
+$(AD): $(exec_name) lang/XShisen.ad
+	-$(MKDIR) work
+	$(CODECONV) < lang/XShisen.ad > $(AD)
+	-@set -x; \
+	for lang in $(LANGS); do \
+	$(CODECONV) < lang/XShisen.ad.$$lang > $(AD).$$lang; \
+	done
+
+.SUFFIXES: .C
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) $(DEFS) $< -o $@

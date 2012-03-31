@@ -1,0 +1,88 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(body.h)
+
+dnl Check for C++ and C compiler
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_INSTALL
+dnl AC_LANG_CPLUSPLUS
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_PREFIX_DEFAULT(/usr/local)
+AC_CONFIG_HEADER(config.h)
+AC_CHECK_HEADERS(sys/time.h unistd.h limits.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_TIME
+AC_STRUCT_TM
+AC_TYPE_SIZE_T
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(gettimeofday mktime usleep select strdup strstr strcasecmp strncasecmp drand48 random rand)
+
+dnl Check for X11 libraries.
+AC_PATH_X
+AC_PATH_XTRA
+LIBS="${LIBS} ${X_PRE_LIBS} -lXt ${X_LIBS} ${X_EXTRA_LIBS}"
+CPPFLAGS="${CPPFLAGS} -I${x_includes}"
+LDFLAGS="${LDFLAGS} -L${x_libraries}"
+AC_CHECK_LIB(X11, main)
+AC_ARG_WITH(xpm-include,
+  [  --with-xpm-include=DIR    XPM include files are in DIR],
+  CPPFLAGS="-I${with_xpm_include} ${CPPFLAGS}")
+AC_ARG_WITH(xpm-lib,
+  [  --with-xpm-lib=DIR        XPM library file is in DIR],
+  LDFLAGS="-L${with_xpm_lib} ${LDFLAGS}")
+AC_CHECK_LIB(Xpm, main)
+AC_CHECK_LIB(Xmu, main)
+AC_ARG_WITH(motif-include,
+  [  --with-motif-include=DIR  Motif include files are in DIR],
+  CPPFLAGS="-I${with_motif_include} ${CPPFLAGS}")
+AC_ARG_WITH(motif-lib,
+  [  --with-motif-lib=DIR      Motif library files are in DIR],
+  LDFLAGS="-L${with_motif_lib} ${LDFLAGS}")
+AC_ARG_WITH(motif,
+  [  --with-motif              Use Motif Tool kit],
+  AC_CHECK_LIB(Xm,  main),
+  AC_CHECK_LIB(Xaw, main))
+AC_ARG_WITH(x11-resource,
+  [  --with-x11-resource=DIR   The root of X11 resource files
+                            (Default \${x_libraries}/X11)],
+  XAD_DIR="${with_x11_resource}")
+
+dnl Configurarion for duplicated high-score
+AC_ARG_ENABLE(dupscore,
+  [  --enable-dupscore         Allow one user to register multiple high score],
+  AC_DEFINE(ALLOW_DUPSCORE))
+
+dnl Data directory and version
+AC_DEFINE(XSHISEN_VERSION, "1.51")
+CPPFLAGS="${CPPFLAGS} -DLIB_DIR=\\\"\$(XSHISENLIB)\\\" -DDAT_DIR=\\\"\$(XSHISENDAT)\\\""
+
+dnl Check for internationalized resources
+[for i in lang/XShisen.ad.*; do
+  lang="`echo $i | sed 's/^.*XShisen\.ad\.//'`"
+  LANGS="$LANGS $lang"
+done]
+
+dnl Check for app-defaults directory
+[if [ -z "${XAD_DIR}" ]; then
+  if [ -d "${x_libraries}/X11/app-defaults" ]; then
+    XAD_DIR="${x_libraries}/X11"
+  elif [ -d "${x_libraries}/app-defaults" ]; then
+    XAD_DIR="${x_libraries}"
+  elif [ -d "/etc/X11/app-defaults" ]; then
+    XAD_DIR="/etc/X11"
+  else
+    XAD_DIR="/usr/lib/X11"
+  fi
+fi]
+
+dnl Do you have mkdirhier?
+AC_PATH_PROG(MKDIR, mkdirhier, mkdir -p)
+
+AC_SUBST(XAD_DIR)
+AC_SUBST(LANGS)
+AC_SUBST(MKDIR)
+AC_OUTPUT(Makefile)
