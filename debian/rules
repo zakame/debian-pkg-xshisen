@@ -4,7 +4,6 @@
 # Let's use CDBS!
 
 include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/rules/simple-patchsys.mk
 include /usr/share/cdbs/1/class/autotools.mk
 
 # Because the upstream source doesn't ship config.{guess,sub}, we have to
