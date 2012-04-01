@@ -3,7 +3,7 @@ Section: games
 Priority: optional
 Maintainer: Zak B. Elep <zakame@zakame.net>
 Build-Depends: autotools-dev, cdbs, debhelper (>= 7.1), lesstif2-dev, libx11-dev, libxmu-dev, libxpm-dev, libxt-dev, libxaw7-dev, xutils-dev
-Standards-Version: 3.8.4
+Standards-Version: 3.9.3
 Homepage: http://www.techfirm.co.jp/~masaoki/xshisen.html
 
 Package: xshisen

@@ -2,8 +2,9 @@ xshisen (1:1.51-4) unstable; urgency=low
 
   * Acknowledge NMUs, thanks everyone :)
   * New maintainer email
+  * Standards-Version: 3.9.3
 
- -- Zak B. Elep <zakame@zakame.net>  Sun, 01 Apr 2012 11:43:20 +0800
+ -- Zak B. Elep <zakame@zakame.net>  Sun, 01 Apr 2012 11:52:49 +0800
 
 xshisen (1:1.51-3.2) unstable; urgency=low
 
