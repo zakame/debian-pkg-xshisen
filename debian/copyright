@@ -4,7 +4,7 @@ Upstream-Contact: Masaoki Kobayashi <masaoki@techfirm.co.jp>
 Source: http://www.techfirm.co.jp/~masaoki/xshisen.html
 
 Files: *
-Copyright: Copyright 2002, 2003, Masaoki Kobayashi
+Copyright: Copyright 2002, 2003, Masaoki Kobayashi <masaoki@techfirm.co.jp>
 License: BSD-3-clause
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
