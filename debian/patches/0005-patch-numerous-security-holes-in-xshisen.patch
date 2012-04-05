@@ -1,0 +1,88 @@
+From: Joey Hess <joeyh@debian.org>
+Date: Thu, 27 Jan 2005 03:05:30 -0500
+Subject: patch numerous security holes in xshisen
+
+Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=55;bug=292065
+Bug-Debian: http://bugs.debian.org/292065
+---
+ Makefile.in |    2 +-
+ main.C      |    5 +++++
+ menubar.C   |    5 +++++
+ score.C     |    3 +++
+ 4 files changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 676d05d..cfca3ad 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -17,7 +17,7 @@ class_name  = XShisen
+ 
+ XSHISENLIB = @datadir@/xshisen
+ XSHISENDAT = @sharedstatedir@
+-CXXFLAGS = @CXXFLAGS@
++CXXFLAGS = @CXXFLAGS@ -DNO_GLOBAL_HIGHSCORE
+ CPPFLAGS = $(CPPOPTS) @CPPFLAGS@
+ CPPOPTS  =
+ LDFLAGS  = @LDFLAGS@
+diff --git a/main.C b/main.C
+index 2669f6f..7ba1fbd 100644
+--- a/main.C
++++ b/main.C
+@@ -351,6 +351,7 @@ main(int argc, char **argv)
+     delete[] scorefile;
+ 
+     if (globRes.scoreOnly) {
++#ifndef NO_GLOBAL_HIGHSCORE
+         sc->DisplayScore(initial_game_state);
+ #if USE_MOTIF
+         XtAddCallback(*sc, XmNokCallback, (XtCallbackProc)ExitCB, NULL);
+@@ -358,6 +359,10 @@ main(int argc, char **argv)
+         XtAddCallback(XtNameToWidget(*sc, "*ok_button"),
+                       XtNcallback, (XtCallbackProc)ExitCB, NULL);
+ #endif
++#else /* NO_GLOBAL_HIGHSCORE */
++	fprintf(stderr, "System score files not enabled.\n");
++	exit(1);
++#endif /* NO_GLOBAL_HIGHSCORE */
+     }
+     else {
+         GetGameSize(initial_game_state, num_piece_x, num_piece_y);
+diff --git a/menubar.C b/menubar.C
+index 02e4cd9..a738a16 100644
+--- a/menubar.C
++++ b/menubar.C
+@@ -158,8 +158,13 @@ MenuBar::MenuBar(Widget parent, int radio_selection, int other_mode, int pixmap_
+                   (XtCallbackProc)GameCB, (XtPointer)1);
+     XtAddCallback(XtNameToWidget(menushell0, "button_2"), XtNcallback,
+                   (XtCallbackProc)GameCB, (XtPointer)2);
++#ifdef NO_GLOBAL_HIGHSCORE
++    XtVaSetValues(XtNameToWidget(menushell0, "button_3"), XtNsensitive,
++                  False, NULL);
++#else
+     XtAddCallback(XtNameToWidget(menushell0, "button_3"), XtNcallback,
+                   (XtCallbackProc)GameCB, (XtPointer)3);
++#endif
+     XtAddCallback(XtNameToWidget(menushell0, "button_4"), XtNcallback,
+                   (XtCallbackProc)GameCB, (XtPointer)4);
+     XtAddCallback(XtNameToWidget(menushell0, "button_5"), XtNcallback,
+diff --git a/score.C b/score.C
+index c87470f..928324a 100644
+--- a/score.C
++++ b/score.C
+@@ -374,6 +374,8 @@ Score::Register(void)
+     struct passwd *pw;
+     char   namebuf[142], myname[NAMELEN+1], gecos[128], *po;
+ 
++#ifndef NO_GLOBAL_HIGHSCORE
++    
+     s1 = scoreToRegister / 1000;
+     ms_to_hms(scoreToRegister, h, m, s);
+     pw = getpwuid(getuid());
+@@ -425,6 +427,7 @@ Score::Register(void)
+     sprintf(rec[i].time, "%2.2d:%2.2d:%2.2d", tp->tm_hour, tp->tm_min, tp->tm_sec);
+     if (writefile() == 0)
+         DisplayScore(game);
++#endif /* NO_GLOBAL_HIGHSCORE */
+ }
+ 
+ void

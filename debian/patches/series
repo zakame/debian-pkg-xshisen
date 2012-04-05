@@ -1,3 +1,6 @@
-10_oldfixes.patch
-11_manpage_fixes.patch
-40_format_security.patch
+0001-Makefile-and-polish-resource-fixes.patch
+0002-Manual-page-fixes.patch
+0003-xshisen-allows-local-user-to-gain-GID-games.patch
+0004-xshisen-buffer-overflow-when-handling-GECOS-field.patch
+0005-patch-numerous-security-holes-in-xshisen.patch
+0006-Fix-format-string-use.patch

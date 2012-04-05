@@ -1,14 +1,17 @@
-From: Grzegorz Prokopski (Debian Developer) <gadek@debian.org>
-Subject: Makefile and polish resource fixes
+From: "Grzegorz Prokopski (Debian Developer)" <gadek@debian.org>
 Date: Tue, 30 Jul 2002 20:22:55 +0200
+Subject: Makefile and polish resource fixes
+
 ---
  Makefile.in        |   21 ++++++++++++---------
  lang/XShisen.ad.pl |   20 ++++++++++----------
  2 files changed, 22 insertions(+), 19 deletions(-)
 
---- xshisen-1.51.orig/Makefile.in
-+++ xshisen-1.51/Makefile.in
-@@ -57,14 +57,15 @@
+diff --git a/Makefile.in b/Makefile.in
+index 330e7ae..676d05d 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -57,14 +57,15 @@ install-prog: $(PROGS)
  	@chmod 755 $(bindir)
  	$(INSTALLP) $(PROGS) $(bindir)/$(PROGS)
  	@echo "XShisen data directory is " $(XSHISENLIB)
@@ -28,7 +31,7 @@ Date: Tue, 30 Jul 2002 20:22:55 +0200
  	@set -x; \
  	for dir in pixmaps/s?; do \
  		dn=`basename $$dir`; \
-@@ -76,6 +77,7 @@
+@@ -76,6 +77,7 @@ install-prog: $(PROGS)
  	done
  
  install-resource: $(AD)
@@ -36,7 +39,7 @@ Date: Tue, 30 Jul 2002 20:22:55 +0200
  	$(MKDIR) $(DESTDIR)$(XAD_DIR)/app-defaults
  	$(INSTALLD) $(AD) $(DESTDIR)$(XAD_DIR)/app-defaults/$(class_name)
  	-[ -n $(LANG) ] && $(MKDIR) $(DESTDIR)$(XAD_DIR)/$(LANG)/app-defaults
-@@ -105,11 +107,12 @@
+@@ -105,11 +107,12 @@ distclean: clean
  
  $(AD): $(exec_name) lang/XShisen.ad
  	-$(MKDIR) work
@@ -54,8 +57,10 @@ Date: Tue, 30 Jul 2002 20:22:55 +0200
  
  .SUFFIXES: .C
  .C.o:
---- xshisen-1.51.orig/lang/XShisen.ad.pl
-+++ xshisen-1.51/lang/XShisen.ad.pl
+diff --git a/lang/XShisen.ad.pl b/lang/XShisen.ad.pl
+index b57116d..9336d03 100644
+--- a/lang/XShisen.ad.pl
++++ b/lang/XShisen.ad.pl
 @@ -1,7 +1,7 @@
  ! Common resources
  XShisen*connectLineColor: blue
@@ -65,7 +70,7 @@ Date: Tue, 30 Jul 2002 20:22:55 +0200
   Shisen-sho dla X11    autorstwa Masaoki Kobayashi <masaoki@techfirm.co.jp>\n\
     Shisen-sho dla Win  autorstwa Shinji Ono <ono@urban.ne.jp>\n\
     Grafika(kafle)      autorstwa Takayuki Akiyama <taco3@ybb.ne.jp>
-@@ -14,7 +14,7 @@
+@@ -14,7 +14,7 @@ XShisen*score*strPeriod: W ostatnich %d dniach
  XShisen*score*strPlayed: Rozegranych
  XShisen*score*strCompleted: Ukoñczonych
  XShisen*score*strTedumari: Zablokowanych
@@ -74,7 +79,7 @@ Date: Tue, 30 Jul 2002 20:22:55 +0200
  XShisen*score*strGames: gier
  XShisen*score*strAverage: ¦rednio
  XShisen*score*strTotal: Wszystkich
-@@ -46,7 +46,7 @@
+@@ -46,7 +46,7 @@ XShisen*mb.button_1.labelString: Operacje
  XShisen*mb.button_1.mnemonic: O
  XShisen*mb.button_2.labelString: Konfiguracja
  XShisen*mb.button_2.mnemonic: C
@@ -83,7 +88,7 @@ Date: Tue, 30 Jul 2002 20:22:55 +0200
  XShisen*mb.button_3.mnemonic: P
  XShisen*pd0.button_0.labelString: Start
  XShisen*pd0.button_0.mnemonic: D
-@@ -87,10 +87,10 @@
+@@ -87,10 +87,10 @@ XShisen*pd1.button_1.acceleratorText: F5
  XShisen*pd2.button_0.labelString: Normalne   (18x 8)
  XShisen*pd2.button_1.labelString: Du¿e       (24x12)
  XShisen*pd2.button_2.labelString: Ogromne    (36x16)
@@ -97,7 +102,7 @@ Date: Tue, 30 Jul 2002 20:22:55 +0200
  XShisen*drawing.translations: #replace <Btn1Down>: PickupPiece()\n\
          <Btn2Down>(2): menu(0,0)\n\
          <Btn3Down>: CancelPiece()
-@@ -118,7 +118,7 @@
+@@ -118,7 +118,7 @@ XShisen*mdialog.cancel_button.label: Zaniechaj
  XShisen*mb.pd0.label: Gra
  XShisen*mb.pd1.label: Operacje
  XShisen*mb.pd2.label: Konfiguracja
@@ -106,7 +111,7 @@ Date: Tue, 30 Jul 2002 20:22:55 +0200
  XShisen*pd0*button_0.label: Start           Ctrl-D
  XShisen*pd0*button_1.label: Restart         Ctrl-R
  XShisen*pd0*button_2.label: Pauza           Ctrl-P
-@@ -131,10 +131,10 @@
+@@ -131,10 +131,10 @@ XShisen*pd1*button_1.label: Cofnij    F5
  XShisen*pd2*button_0.label: Normalne  (18x 8)
  XShisen*pd2*button_1.label: Du¿e      (24x12)
  XShisen*pd2*button_2.label: Ogromne   (36x16)

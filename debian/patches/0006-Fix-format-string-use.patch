@@ -1,7 +1,6 @@
-Subject: Fix format string use
-From: Daniel T Chen <seven.steps@gmail.com>,
- gregor herrmann <gregoa@debian.org>
+From: "seven.steps@gmail.com" <seven.steps@gmail.com>
 Date: Thu, 24 Nov 2011 21:40:40 +0100
+Subject: Fix format string use
 
 Origin: vendor
 Bug-Debian: http://bugs.debian.org/565064
@@ -11,9 +10,11 @@ Last-Update: 2011-11-24
  score.C |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/score.C b/score.C
+index 928324a..9e3d4b0 100644
 --- a/score.C
 +++ b/score.C
-@@ -337,7 +337,7 @@
+@@ -337,7 +337,7 @@ Score::DisplayScore(int kind_of_game)
      }
      // Always read the latest high score
      readfile();

@@ -1,0 +1,209 @@
+From: Jari Aalto <jari.aalto@cante.net>
+Date: Sun, 9 May 2010 01:02:33 +0300
+Subject: Manual page fixes
+
+Signed-off-by: Jari Aalto <jari.aalto@cante.net>
+---
+ man/xshisen.6             |    8 ++++----
+ man/xshisen.6.ja          |    8 ++++----
+ man/xshisen.6.ja_JP       |    8 ++++----
+ man/xshisen.6.ja_JP.PCK   |    6 +++---
+ man/xshisen.6.ja_JP.SJIS  |    6 +++---
+ man/xshisen.6.ja_JP.eucJP |    8 ++++----
+ man/xshisen.6.ja_JP.ujis  |    8 ++++----
+ 7 files changed, 26 insertions(+), 26 deletions(-)
+
+diff --git a/man/xshisen.6 b/man/xshisen.6
+index f5de27f..13d87e5 100644
+--- a/man/xshisen.6
++++ b/man/xshisen.6
+@@ -135,11 +135,11 @@ environment variable.
+ .TP 8
+ .B XShisen*drawing.translations
+ Button binding setting for your mouse.  Default is
+-.NF
++.nf
+ 
+-      <Btn1Down>: #replace PickupPiece() \n <Btn3Down>: CancelPiece()
++      <Btn1Down>: #replace PickupPiece() \\n <Btn3Down>: CancelPiece()
+ 
+-.FI
++.fi
+ 
+ .SH MENU BAR AND KEYBOARD
+ .TP 8
+@@ -181,7 +181,7 @@ which cancels the search result.
+ 
+ .SH AUTHORS
+ Shisen-sho for X11: Masaoki Kobayashi
+-.RE
++
+ Picture: Takayuki Akiyama
+ 
+ .SH COPYRIGHT
+diff --git a/man/xshisen.6.ja b/man/xshisen.6.ja
+index 125a0bb..22f0043 100644
+--- a/man/xshisen.6.ja
++++ b/man/xshisen.6.ja
+@@ -141,11 +141,11 @@ xshisen \- 
+ .TP 8
+ .B XShisen*drawing.translations
+ •ﬁ•¶•π§Œ•‹•ø•Û•–•§•Û•«•£•Û•∞§Ú —ππ§∑§ﬁ§π°£•«•’•©•Î•»§œ
+-.NF
++.nf
+ 
+-      <Btn1Down>: #replace PickupPiece() \n <Btn3Down>: CancelPiece()
++      <Btn1Down>: #replace PickupPiece() \\n <Btn3Down>: CancelPiece()
+ 
+-.FI
++.fi
+ §«§π°£
+ 
+ .SH •·•À•Â°º•–°º§»•≠°º¡‡∫Ó
+@@ -192,7 +192,7 @@ xshisen \- 
+ 
+ .SH AUTHORS
+ ªÕ¿Óæ  for X11: æÆŒ” ¿µ∂Ω
+-.RE
++
+ «◊•«•∂•§•Û: Ω©ª≥ Œ¥«∑
+ 
+ .SH COPYRIGHT
+diff --git a/man/xshisen.6.ja_JP b/man/xshisen.6.ja_JP
+index 125a0bb..22f0043 100644
+--- a/man/xshisen.6.ja_JP
++++ b/man/xshisen.6.ja_JP
+@@ -141,11 +141,11 @@ xshisen \- 
+ .TP 8
+ .B XShisen*drawing.translations
+ •ﬁ•¶•π§Œ•‹•ø•Û•–•§•Û•«•£•Û•∞§Ú —ππ§∑§ﬁ§π°£•«•’•©•Î•»§œ
+-.NF
++.nf
+ 
+-      <Btn1Down>: #replace PickupPiece() \n <Btn3Down>: CancelPiece()
++      <Btn1Down>: #replace PickupPiece() \\n <Btn3Down>: CancelPiece()
+ 
+-.FI
++.fi
+ §«§π°£
+ 
+ .SH •·•À•Â°º•–°º§»•≠°º¡‡∫Ó
+@@ -192,7 +192,7 @@ xshisen \- 
+ 
+ .SH AUTHORS
+ ªÕ¿Óæ  for X11: æÆŒ” ¿µ∂Ω
+-.RE
++
+ «◊•«•∂•§•Û: Ω©ª≥ Œ¥«∑
+ 
+ .SH COPYRIGHT
+diff --git a/man/xshisen.6.ja_JP.PCK b/man/xshisen.6.ja_JP.PCK
+index 432f20e..562321d 100644
+--- a/man/xshisen.6.ja_JP.PCK
++++ b/man/xshisen.6.ja_JP.PCK
+@@ -141,11 +141,11 @@ xshisen \- 
+ .TP 8
+ .B XShisen*drawing.translations
+ É}ÉEÉXÇÃÉ{É^ÉìÉoÉCÉìÉfÉBÉìÉOÇïœçXÇµÇ‹Ç∑ÅBÉfÉtÉHÉãÉgÇÕ
+-.NF
++.nf
+ 
+       <Btn1Down>: #replace PickupPiece() \n <Btn3Down>: CancelPiece()
+ 
+-.FI
++.fi
+ Ç≈Ç∑ÅB
+ 
+ .SH ÉÅÉjÉÖÅ[ÉoÅ[Ç∆ÉLÅ[ëÄçÏ
+@@ -192,7 +192,7 @@ xshisen \- 
+ 
+ .SH AUTHORS
+ élêÏè» for X11: è¨ó— ê≥ãª
+-.RE
++
+ îvÉfÉUÉCÉì: èHéR ó≤îV
+ 
+ .SH COPYRIGHT
+diff --git a/man/xshisen.6.ja_JP.SJIS b/man/xshisen.6.ja_JP.SJIS
+index 432f20e..562321d 100644
+--- a/man/xshisen.6.ja_JP.SJIS
++++ b/man/xshisen.6.ja_JP.SJIS
+@@ -141,11 +141,11 @@ xshisen \- 
+ .TP 8
+ .B XShisen*drawing.translations
+ É}ÉEÉXÇÃÉ{É^ÉìÉoÉCÉìÉfÉBÉìÉOÇïœçXÇµÇ‹Ç∑ÅBÉfÉtÉHÉãÉgÇÕ
+-.NF
++.nf
+ 
+       <Btn1Down>: #replace PickupPiece() \n <Btn3Down>: CancelPiece()
+ 
+-.FI
++.fi
+ Ç≈Ç∑ÅB
+ 
+ .SH ÉÅÉjÉÖÅ[ÉoÅ[Ç∆ÉLÅ[ëÄçÏ
+@@ -192,7 +192,7 @@ xshisen \- 
+ 
+ .SH AUTHORS
+ élêÏè» for X11: è¨ó— ê≥ãª
+-.RE
++
+ îvÉfÉUÉCÉì: èHéR ó≤îV
+ 
+ .SH COPYRIGHT
+diff --git a/man/xshisen.6.ja_JP.eucJP b/man/xshisen.6.ja_JP.eucJP
+index 125a0bb..22f0043 100644
+--- a/man/xshisen.6.ja_JP.eucJP
++++ b/man/xshisen.6.ja_JP.eucJP
+@@ -141,11 +141,11 @@ xshisen \- 
+ .TP 8
+ .B XShisen*drawing.translations
+ •ﬁ•¶•π§Œ•‹•ø•Û•–•§•Û•«•£•Û•∞§Ú —ππ§∑§ﬁ§π°£•«•’•©•Î•»§œ
+-.NF
++.nf
+ 
+-      <Btn1Down>: #replace PickupPiece() \n <Btn3Down>: CancelPiece()
++      <Btn1Down>: #replace PickupPiece() \\n <Btn3Down>: CancelPiece()
+ 
+-.FI
++.fi
+ §«§π°£
+ 
+ .SH •·•À•Â°º•–°º§»•≠°º¡‡∫Ó
+@@ -192,7 +192,7 @@ xshisen \- 
+ 
+ .SH AUTHORS
+ ªÕ¿Óæ  for X11: æÆŒ” ¿µ∂Ω
+-.RE
++
+ «◊•«•∂•§•Û: Ω©ª≥ Œ¥«∑
+ 
+ .SH COPYRIGHT
+diff --git a/man/xshisen.6.ja_JP.ujis b/man/xshisen.6.ja_JP.ujis
+index 125a0bb..22f0043 100644
+--- a/man/xshisen.6.ja_JP.ujis
++++ b/man/xshisen.6.ja_JP.ujis
+@@ -141,11 +141,11 @@ xshisen \- 
+ .TP 8
+ .B XShisen*drawing.translations
+ •ﬁ•¶•π§Œ•‹•ø•Û•–•§•Û•«•£•Û•∞§Ú —ππ§∑§ﬁ§π°£•«•’•©•Î•»§œ
+-.NF
++.nf
+ 
+-      <Btn1Down>: #replace PickupPiece() \n <Btn3Down>: CancelPiece()
++      <Btn1Down>: #replace PickupPiece() \\n <Btn3Down>: CancelPiece()
+ 
+-.FI
++.fi
+ §«§π°£
+ 
+ .SH •·•À•Â°º•–°º§»•≠°º¡‡∫Ó
+@@ -192,7 +192,7 @@ xshisen \- 
+ 
+ .SH AUTHORS
+ ªÕ¿Óæ  for X11: æÆŒ” ¿µ∂Ω
+-.RE
++
+ «◊•«•∂•§•Û: Ω©ª≥ Œ¥«∑
+ 
+ .SH COPYRIGHT
