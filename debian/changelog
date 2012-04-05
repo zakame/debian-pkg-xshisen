@@ -5,8 +5,10 @@ xshisen (1:1.51-4) unstable; urgency=low
   * Standards-Version: 3.9.3
   * Remove simple-patchsys.mk; use built-in quilt
   * Reformat debian/patches; break down oldfixes to several patches
+  * Add watch file for uscan
+  * Update debian/copyright for DEP-5
 
- -- Zak B. Elep <zakame@zakame.net>  Thu, 05 Apr 2012 13:37:50 +0800
+ -- Zak B. Elep <zakame@zakame.net>  Thu, 05 Apr 2012 15:04:13 +0800
 
 xshisen (1:1.51-3.2) unstable; urgency=low
 
