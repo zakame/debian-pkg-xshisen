@@ -1,0 +1,51 @@
+From: Cyril Brulebois <kibi@debian.org>
+Subject: Fix FTBFS with gcc 4.7 by using “this->foo” where needed (Closes: #667425).
+Date: Wed, 4 Apr 2012 16:08:57 +0200
+
+Bug-Debian: http://bugs.debian.org/667425
+---
+ body.C |   24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+--- a/body.C
++++ b/body.C
+@@ -40,13 +40,13 @@ Body::Body(int g, int x, int y, Widget p
+ {
+     int i, num_each;
+ 
+-    pie      = new (Mahjong** [xsize]);
+-    initialp = new (Mahjong** [xsize]);
+-    pstatus  = new (unsigned char* [xsize]);
++    pie      = new (Mahjong** [this->xsize]);
++    initialp = new (Mahjong** [this->xsize]);
++    pstatus  = new (unsigned char* [this->xsize]);
+     for(i=0; i<xsize; i++) {
+-        pie[i]      = new (Mahjong* [ysize]);
+-        initialp[i] = new (Mahjong* [ysize]);
+-        pstatus[i]  = new unsigned char [ysize];
++        pie[i]      = new (Mahjong* [this->ysize]);
++        initialp[i] = new (Mahjong* [this->ysize]);
++        pstatus[i]  = new unsigned char [this->ysize];
+     }
+     num_each = x*y/PKIND;
+     for(i=0; i<PKIND; i++) {
+@@ -146,13 +146,13 @@ Body::ChangeGame(int g, int x, int y)
+     delete[] initialp;
+     delete[] pstatus;
+ 
+-    pie      = new (Mahjong** [xsize]);
+-    initialp = new (Mahjong** [xsize]);
+-    pstatus  = new (unsigned char* [xsize]);
++    pie      = new (Mahjong** [this->xsize]);
++    initialp = new (Mahjong** [this->xsize]);
++    pstatus  = new (unsigned char* [this->xsize]);
+     for(i=0; i<xsize; i++) {
+-        pie[i]      = new (Mahjong* [ysize]);
+-        initialp[i] = new (Mahjong* [ysize]);
+-        pstatus[i]  = new unsigned char [ysize];
++        pie[i]      = new (Mahjong* [this->ysize]);
++        initialp[i] = new (Mahjong* [this->ysize]);
++        pstatus[i]  = new unsigned char [this->ysize];
+     }
+     num_each = x*y/PKIND;
+     for(i=0; i<PKIND; i++) {
