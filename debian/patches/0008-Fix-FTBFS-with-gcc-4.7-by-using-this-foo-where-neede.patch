@@ -1,15 +1,22 @@
 From: Cyril Brulebois <kibi@debian.org>
-Subject: Fix FTBFS with gcc 4.7 by using “this->foo” where needed (Closes: #667425).
 Date: Wed, 4 Apr 2012 16:08:57 +0200
+Subject: =?UTF-8?q?Fix=20FTBFS=20with=20gcc=204.7=20by=20using=20=E2=80=9Cth?=
+ =?UTF-8?q?is->foo=E2=80=9D=20where=20needed=20(Closes:=20#667425).?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
 Bug-Debian: http://bugs.debian.org/667425
+Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=10;bug=667425
 ---
  body.C |   24 ++++++++++++------------
  1 file changed, 12 insertions(+), 12 deletions(-)
 
+diff --git a/body.C b/body.C
+index 0e9cc1d..7e700f1 100644
 --- a/body.C
 +++ b/body.C
-@@ -40,13 +40,13 @@ Body::Body(int g, int x, int y, Widget p
+@@ -40,13 +40,13 @@ Body::Body(int g, int x, int y, Widget parent, Widget top)
  {
      int i, num_each;
  

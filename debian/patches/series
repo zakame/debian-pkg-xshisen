@@ -5,4 +5,4 @@
 0005-patch-numerous-security-holes-in-xshisen.patch
 0006-Fix-format-string-use.patch
 0007-Fix-version-number-in-resources.patch
-fix-ftbfs-with-gcc-4.7
+0008-Fix-FTBFS-with-gcc-4.7-by-using-this-foo-where-neede.patch
