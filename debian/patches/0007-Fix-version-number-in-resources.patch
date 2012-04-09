@@ -1,0 +1,120 @@
+From: "Zak B. Elep" <zakame@zakame.net>
+Date: Mon, 9 Apr 2012 15:39:08 +0800
+Subject: Fix version number in resources
+
+Origin: vendor
+---
+ lang/XShisen.ad             |    2 +-
+ lang/XShisen.ad.ja          |    2 +-
+ lang/XShisen.ad.ja_JP       |    2 +-
+ lang/XShisen.ad.ja_JP.JIS7  |    2 +-
+ lang/XShisen.ad.ja_JP.PCK   |    2 +-
+ lang/XShisen.ad.ja_JP.SJIS  |    2 +-
+ lang/XShisen.ad.ja_JP.eucJP |    2 +-
+ lang/XShisen.ad.ja_JP.ujis  |    2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/lang/XShisen.ad b/lang/XShisen.ad
+index 4e6fea7..c68023a 100644
+--- a/lang/XShisen.ad
++++ b/lang/XShisen.ad
+@@ -1,7 +1,7 @@
+ ! Common resources
+ XShisen*connectLineColor: blue
+ XShisen*connectLineTime: 1000
+-XShisen*aboutString: Shisen-sho for X11 ver XSHISEN_VERSION\n\n\
++XShisen*aboutString: Shisen-sho for X11 ver 1.51\n\n\
+  Shisen-sho for X11    by Masaoki Kobayashi <masaoki@techfirm.co.jp>\n\
+    Shisen-sho for Win  by Shinji Ono <ono@urban.ne.jp>\n\
+    Picture             by Takayuki Akiyama <taco3@ybb.ne.jp>
+diff --git a/lang/XShisen.ad.ja b/lang/XShisen.ad.ja
+index 4519074..9b66542 100644
+--- a/lang/XShisen.ad.ja
++++ b/lang/XShisen.ad.ja
+@@ -1,7 +1,7 @@
+ ! Common resources
+ XShisen*connectLineColor: blue
+ XShisen*connectLineTime: 1000
+-XShisen*aboutString: »ÍÀî¾Ê for X11 Ver XSHISEN_VERSION\n\n\
++XShisen*aboutString: »ÍÀî¾Ê for X11 Ver 1.51\n\n\
+  »ÍÀî¾Ê for X11     by ¾®ÎÓ Àµ¶½ <masaoki@techfirm.co.jp>\n\
+    »ÍÀî¾Ê for Win   by ¾®Ìî ¿¸Æó <ono@urban.ne.jp>\n\
+    Ç×¥Ç¥¶¥¤¥ó       by ½©»³ Î´Ç· <taco3@ybb.ne.jp>
+diff --git a/lang/XShisen.ad.ja_JP b/lang/XShisen.ad.ja_JP
+index 4519074..9b66542 100644
+--- a/lang/XShisen.ad.ja_JP
++++ b/lang/XShisen.ad.ja_JP
+@@ -1,7 +1,7 @@
+ ! Common resources
+ XShisen*connectLineColor: blue
+ XShisen*connectLineTime: 1000
+-XShisen*aboutString: »ÍÀî¾Ê for X11 Ver XSHISEN_VERSION\n\n\
++XShisen*aboutString: »ÍÀî¾Ê for X11 Ver 1.51\n\n\
+  »ÍÀî¾Ê for X11     by ¾®ÎÓ Àµ¶½ <masaoki@techfirm.co.jp>\n\
+    »ÍÀî¾Ê for Win   by ¾®Ìî ¿¸Æó <ono@urban.ne.jp>\n\
+    Ç×¥Ç¥¶¥¤¥ó       by ½©»³ Î´Ç· <taco3@ybb.ne.jp>
+diff --git a/lang/XShisen.ad.ja_JP.JIS7 b/lang/XShisen.ad.ja_JP.JIS7
+index 19ac530..83bdeb5 100644
+--- a/lang/XShisen.ad.ja_JP.JIS7
++++ b/lang/XShisen.ad.ja_JP.JIS7
+@@ -1,7 +1,7 @@
+ ! Common resources
+ XShisen*connectLineColor: blue
+ XShisen*connectLineTime: 1000
+-XShisen*aboutString: $B;M@n>J(B for X11 Ver XSHISEN_VERSION\n\n\
++XShisen*aboutString: $B;M@n>J(B for X11 Ver 1.51\n\n\
+  $B;M@n>J(B for X11     by $B>.NS(B $B@56=(B <masaoki@techfirm.co.jp>\n\
+    $B;M@n>J(B for Win   by $B>.Ln(B $B?8Fs(B <ono@urban.ne.jp>\n\
+    $BGW%G%6%$%s(B       by $B=);3(B $BN4G7(B <taco3@ybb.ne.jp>
+diff --git a/lang/XShisen.ad.ja_JP.PCK b/lang/XShisen.ad.ja_JP.PCK
+index 418e4d7..a47ca8d 100644
+--- a/lang/XShisen.ad.ja_JP.PCK
++++ b/lang/XShisen.ad.ja_JP.PCK
+@@ -1,7 +1,7 @@
+ ! Common resources
+ XShisen*connectLineColor: blue
+ XShisen*connectLineTime: 1000
+-XShisen*aboutString: lìÈ for X11 Ver XSHISEN_VERSION\n\n\
++XShisen*aboutString: lìÈ for X11 Ver 1.51\n\n\
+  lìÈ for X11     by ¬—Ñ ³‹» <masaoki@techfirm.co.jp>\n\
+    lìÈ for Win   by ¬–ì W“ñ <ono@urban.ne.jp>\n\
+    ”vƒfƒUƒCƒ“       by HR —²”V <taco3@ybb.ne.jp>
+diff --git a/lang/XShisen.ad.ja_JP.SJIS b/lang/XShisen.ad.ja_JP.SJIS
+index 418e4d7..a47ca8d 100644
+--- a/lang/XShisen.ad.ja_JP.SJIS
++++ b/lang/XShisen.ad.ja_JP.SJIS
+@@ -1,7 +1,7 @@
+ ! Common resources
+ XShisen*connectLineColor: blue
+ XShisen*connectLineTime: 1000
+-XShisen*aboutString: lìÈ for X11 Ver XSHISEN_VERSION\n\n\
++XShisen*aboutString: lìÈ for X11 Ver 1.51\n\n\
+  lìÈ for X11     by ¬—Ñ ³‹» <masaoki@techfirm.co.jp>\n\
+    lìÈ for Win   by ¬–ì W“ñ <ono@urban.ne.jp>\n\
+    ”vƒfƒUƒCƒ“       by HR —²”V <taco3@ybb.ne.jp>
+diff --git a/lang/XShisen.ad.ja_JP.eucJP b/lang/XShisen.ad.ja_JP.eucJP
+index 4519074..9b66542 100644
+--- a/lang/XShisen.ad.ja_JP.eucJP
++++ b/lang/XShisen.ad.ja_JP.eucJP
+@@ -1,7 +1,7 @@
+ ! Common resources
+ XShisen*connectLineColor: blue
+ XShisen*connectLineTime: 1000
+-XShisen*aboutString: »ÍÀî¾Ê for X11 Ver XSHISEN_VERSION\n\n\
++XShisen*aboutString: »ÍÀî¾Ê for X11 Ver 1.51\n\n\
+  »ÍÀî¾Ê for X11     by ¾®ÎÓ Àµ¶½ <masaoki@techfirm.co.jp>\n\
+    »ÍÀî¾Ê for Win   by ¾®Ìî ¿¸Æó <ono@urban.ne.jp>\n\
+    Ç×¥Ç¥¶¥¤¥ó       by ½©»³ Î´Ç· <taco3@ybb.ne.jp>
+diff --git a/lang/XShisen.ad.ja_JP.ujis b/lang/XShisen.ad.ja_JP.ujis
+index 4519074..9b66542 100644
+--- a/lang/XShisen.ad.ja_JP.ujis
++++ b/lang/XShisen.ad.ja_JP.ujis
+@@ -1,7 +1,7 @@
+ ! Common resources
+ XShisen*connectLineColor: blue
+ XShisen*connectLineTime: 1000
+-XShisen*aboutString: »ÍÀî¾Ê for X11 Ver XSHISEN_VERSION\n\n\
++XShisen*aboutString: »ÍÀî¾Ê for X11 Ver 1.51\n\n\
+  »ÍÀî¾Ê for X11     by ¾®ÎÓ Àµ¶½ <masaoki@techfirm.co.jp>\n\
+    »ÍÀî¾Ê for Win   by ¾®Ìî ¿¸Æó <ono@urban.ne.jp>\n\
+    Ç×¥Ç¥¶¥¤¥ó       by ½©»³ Î´Ç· <taco3@ybb.ne.jp>

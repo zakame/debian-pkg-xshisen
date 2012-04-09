@@ -4,3 +4,4 @@
 0004-xshisen-buffer-overflow-when-handling-GECOS-field.patch
 0005-patch-numerous-security-holes-in-xshisen.patch
 0006-Fix-format-string-use.patch
+0007-Fix-version-number-in-resources.patch
