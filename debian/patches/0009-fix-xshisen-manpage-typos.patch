@@ -1,0 +1,45 @@
+From: "A. Costa" <agcosta@gis.net>
+Date: Wed, 25 Jan 2012 15:36:25 -0500
+Subject: fix xshisen manpage typos
+
+Bug-Debian: http://bugs.debian.org/657352
+Origin: vendor, http://bugs.debian.org/cgi-bin/bugreport.cgi?msg=5;bug=657352
+---
+ man/xshisen.6 |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/man/xshisen.6 b/man/xshisen.6
+index 13d87e5..f7c18e2 100644
+--- a/man/xshisen.6
++++ b/man/xshisen.6
+@@ -12,7 +12,7 @@ requires a pointing device like mouse.  It cannot be controlled
+ with only keyboard.
+ 
+ .SH RULES
+-The game will over when you remove all the pieces on the board.
++The game will be over when you remove all the pieces on the board.
+ The pieces can be removed only when both of the following
+ conditions are true.
+ 
+@@ -110,9 +110,9 @@ This resource specifies the score file name.  This file name must
+ not contain the directory name.  Default value is "xshisen-scores".
+ .TP 8
+ .B XShisen*connectLineTime
+-The delay time in mili-second between you clicke the pair and the
+-pair is actually removed from screen.  This value should be enough 
+-big for beginners, but experts may want this value smaller in
++The delay time in mili-seconds between when you clicked the pair and the
++pair is actually removed from screen.  This value should be big enough 
++for beginners, but experts may want this value smaller in
+ order to play quickly.  Default value is 1000 mili-seconds.
+ .TP 8
+ .B XShisen*connectLineColor
+@@ -172,7 +172,7 @@ button bindings with
+ \fBXShisen*drawing.translations\fR resource.
+ .TP 8
+ .B Button 1
+-Specifies the piece to remove.  You can cencel the selection when
++Specifies the piece to remove.  You can cancel the selection when
+ you click the selected piece again.
+ .TP 8
+ .B Button 3

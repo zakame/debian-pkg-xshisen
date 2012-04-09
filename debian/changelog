@@ -11,8 +11,9 @@ xshisen (1:1.51-4) unstable; urgency=low
   * Fix version number in X resources (now says 1.51 instead of 1.50)
   * Add Vcs-* fields
   * Add patch by kibi@ to fix FTBFS on gcc-4.7 (Closes: #667425)
+  * Fix manpage typos, thanks to "A. Costa" (Closes: #657352)
 
- -- Zak B. Elep <zakame@zakame.net>  Mon, 09 Apr 2012 16:40:47 +0800
+ -- Zak B. Elep <zakame@zakame.net>  Mon, 09 Apr 2012 16:51:36 +0800
 
 xshisen (1:1.51-3.2) unstable; urgency=low
 
