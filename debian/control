@@ -5,6 +5,8 @@ Maintainer: Zak B. Elep <zakame@zakame.net>
 Build-Depends: autotools-dev, debhelper (>= 9), lesstif2-dev, libx11-dev, libxmu-dev, libxpm-dev, libxt-dev, libxaw7-dev, xutils-dev
 Standards-Version: 3.9.3
 Homepage: http://www.techfirm.co.jp/~masaoki/xshisen.html
+Vcs-Browser: https://github.com/zakame/debian-pkg-xshisen
+Vcs-Git: git://github.com/zakame/debian-pkg-xshisen.git
 
 Package: xshisen
 Architecture: any
